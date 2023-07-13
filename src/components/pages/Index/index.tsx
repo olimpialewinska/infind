@@ -20,8 +20,23 @@ export const Index = observer(() => {
 
   return (
     <Bg theme={theme}>
-      {" "}
       <Navbar />
+
+      <button
+        onClick={() => {
+          handleThemeChange("light");
+        }}
+      >
+        light
+      </button>
+
+      <button
+        onClick={() => {
+          handleThemeChange("dark");
+        }}
+      >
+        dark
+      </button>
     </Bg>
   );
 });

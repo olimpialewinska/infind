@@ -6,7 +6,7 @@ import { store } from "@/stores";
 import { observer } from "mobx-react-lite";
 
 export const Login = observer(() => {
-  const { t } = useTranslation(store.language.currentLanguage, "index");
+  const { t } = useTranslation(store.language.currentLanguage, "login");
   const theme: "dark" | "light" = store.theme.currentTheme;
   return (
     <Bg theme={theme}>

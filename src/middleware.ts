@@ -13,6 +13,10 @@ export const config = {
 const cookieName = "i18next";
 
 export async function middleware(req: NextRequest) {
+  const isInternalRequest = req.headers
+    .get("referer")
+    ?.startsWith(req.nextUrl.origin);
+
   let lng;
   if (req.cookies.has(cookieName)) {
     lng = acceptLanguage.get(req.cookies.get(cookieName)?.value);
@@ -24,14 +28,15 @@ export async function middleware(req: NextRequest) {
     lng = fallbackLng;
   }
 
-  // Redirect if lng in path is not supported
   if (
     !languages.some((loc) => req.nextUrl.pathname.startsWith(`/${loc}`)) &&
     !req.nextUrl.pathname.startsWith("/_next")
   ) {
-    return NextResponse.redirect(
-      new URL(`/${lng}${req.nextUrl.pathname}`, req.url)
-    );
+    if (!isInternalRequest) {
+      return NextResponse.redirect(
+        new URL(`/${lng}${req.nextUrl.pathname}`, req.url)
+      );
+    }
   }
 
   if (req.headers.has("referer")) {
