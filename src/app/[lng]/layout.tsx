@@ -1,11 +1,15 @@
-import { dir } from "i18next";
+"use client";
+import { useEffect } from "react";
 import { languages } from "../i18n/settings";
+import { store } from "@/stores";
+import { useCookies } from "react-cookie";
+import { Navbar } from "@/components/Navbar";
 
 export async function generateStaticParams() {
   return languages.map((lng) => ({ lng }));
 }
 
-export default function RootLayout({
+export default function Layout({
   children,
   params,
 }: {
@@ -14,10 +18,21 @@ export default function RootLayout({
     lng: string;
   };
 }) {
-  return (
-    <html lang={params.lng} dir={dir(params.lng)}>
-      <head />
-      <body>{children}</body>
-    </html>
-  );
+  store.language.setLanguage(params.lng);
+  const [cookies, setCookie] = useCookies(["infind-theme"]);
+
+  useEffect(() => {
+    const preferredTheme = window.matchMedia("(prefers-color-scheme: dark)")
+      .matches
+      ? "dark"
+      : "light";
+
+    if (cookies["infind-theme"]) {
+      store.theme.setTheme(cookies["infind-theme"]);
+    } else {
+      store.theme.setTheme(preferredTheme);
+    }
+  }, [cookies]);
+
+  return <div>{children}</div>;
 }
