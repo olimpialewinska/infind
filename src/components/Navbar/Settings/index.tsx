@@ -4,12 +4,14 @@ import { observer } from "mobx-react-lite";
 import { Label, Row, Select, Settings, SettingsIcon } from "./style";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useTranslation } from "@/app/i18n/client";
+import { useCookies } from "react-cookie";
 
 export const SettingsElement = observer(() => {
   const { t } = useTranslation(store.language.currentLanguage, "navbar");
   const settingsRef = useRef<HTMLDivElement>(null);
   const selectRef = useRef<HTMLSelectElement>(null);
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
+  const [cookies, setCookie] = useCookies(["infind-theme"]);
 
   const createQueryString = useCallback((path: string, value: string) => {
     const langCodePattern = /^\/[a-z]{2}/;
@@ -31,6 +33,9 @@ export const SettingsElement = observer(() => {
 
   const handleThemeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     store.theme.setTheme(e.target.value as "dark" | "light");
+    setCookie("infind-theme", e.target.value, {
+      path: "/",
+    });
   };
 
   const handleSettingsOpen = useCallback(() => {
@@ -84,34 +89,25 @@ export const SettingsElement = observer(() => {
       >
         <Row>
           <Label htmlFor="language">{t("language", "navbar")}</Label>
-          <Select ref={selectRef} onChange={handleLanguageChange}>
-            <option
-              value="en"
-              selected={store.language.currentLanguage === "en"}
-            >
-              {t("english", "navbar")}
-            </option>
-            <option
-              selected={store.language.currentLanguage === "pl"}
-              value="pl"
-            >
-              {t("polish", "navbar")}
-            </option>
+          <Select
+            ref={selectRef}
+            onChange={handleLanguageChange}
+            defaultValue={store.language.currentLanguage}
+          >
+            <option value="en">{t("english", "navbar")}</option>
+            <option value="pl">{t("polish", "navbar")}</option>
           </Select>
         </Row>
 
         <Row>
           <Label htmlFor="dark-mode">{t("color-mode", "navbar")}</Label>
-          <Select ref={selectRef} onChange={handleThemeChange}>
-            <option selected={store.theme.currentTheme === "dark"} value="dark">
-              {t("dark", "navbar")}
-            </option>
-            <option
-              selected={store.theme.currentTheme === "light"}
-              value="light"
-            >
-              {t("light", "navbar")}
-            </option>
+          <Select
+            ref={selectRef}
+            onChange={handleThemeChange}
+            defaultValue={store.theme.currentTheme}
+          >
+            <option value="dark">{t("dark", "navbar")}</option>
+            <option value="light">{t("light", "navbar")}</option>
           </Select>
         </Row>
       </Settings>

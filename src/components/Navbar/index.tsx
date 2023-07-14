@@ -49,7 +49,7 @@ export const Navbar = observer(() => {
 
   return (
     <Wrapper>
-      <Link href={`${getURL("/")}${store.language.currentLanguage}`}>
+      <Link href={`/${store.language.currentLanguage}`}>
         <Logo
           style={{
             filter: store.theme.currentTheme === "dark" ? "invert(1)" : "none",
