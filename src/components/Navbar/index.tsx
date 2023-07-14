@@ -14,6 +14,8 @@ import { useTranslation } from "@/app/i18n/client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
+import getURL from "@/app/utils/functions/getURL";
+import { SettingsElement } from "./Settings";
 
 const navigationItems = [
   {
@@ -47,7 +49,7 @@ export const Navbar = observer(() => {
 
   return (
     <Wrapper>
-      <Link href={`/`}>
+      <Link href={`${getURL("/")}${store.language.currentLanguage}`}>
         <Logo
           style={{
             filter: store.theme.currentTheme === "dark" ? "invert(1)" : "none",
@@ -78,6 +80,8 @@ export const Navbar = observer(() => {
             </Item>
           </Link>
         ))}
+
+        <SettingsElement />
       </Container>
 
       <Mobile

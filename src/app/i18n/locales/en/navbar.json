@@ -2,5 +2,11 @@
     "login": "Login",
     "books": "Books",
     "movies": "Movies",
-    "music": "Music"
+    "music": "Music",
+    "language": "Language",
+    "color-mode": "Color mode",
+    "polish": "Polski",
+    "english": "English",
+    "light": "Light",
+    "dark": "Dark"
 }
