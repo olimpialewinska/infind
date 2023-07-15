@@ -19,7 +19,6 @@ export class Theme {
   }
 
   public setTheme(theme: "dark" | "light") {
-    console.log("xd");
     this.currentTheme = theme;
   }
 }

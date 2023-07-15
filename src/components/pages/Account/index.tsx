@@ -4,15 +4,15 @@ import { Navbar } from "@/components/Navbar";
 import { Bg } from "@/components/styles";
 import { store } from "@/stores";
 import { observer } from "mobx-react-lite";
-import { useEffect } from "react";
 
-export const Index = observer(() => {
+export const Account = observer(() => {
   const { t } = useTranslation(store.language.currentLanguage, "index");
   const theme: "dark" | "light" = store.theme.currentTheme;
 
   return (
     <Bg theme={theme}>
       <Navbar />
+      {"account " + store.user.currentUserStore?.email}
     </Bg>
   );
 });

@@ -10,8 +10,7 @@ export const Books = observer(() => {
   const theme: "dark" | "light" = store.theme.currentTheme;
   return (
     <Bg theme={theme}>
-      {" "}
-      <Navbar />
+      <Navbar />{" "}
     </Bg>
   );
 });

@@ -5,12 +5,15 @@ import { Label, Row, Select, Settings, SettingsIcon, Option } from "./style";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useTranslation } from "@/app/i18n/client";
 import { useCookies } from "react-cookie";
+import { Button } from "@/components/pages/Login/style";
+import { signOut } from "@/utils/functions/auth/login";
+import { useRouter } from "next/navigation";
 
 export const SettingsElement = observer(() => {
   const { t } = useTranslation(store.language.currentLanguage, "navbar");
   const settingsRef = useRef<HTMLDivElement>(null);
   const selectRef = useRef<HTMLSelectElement>(null);
-
+  const router = useRouter();
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
   const [cookies, setCookie] = useCookies(["infind-theme"]);
 
@@ -19,6 +22,11 @@ export const SettingsElement = observer(() => {
     const newPath = path.replace(langCodePattern, `/${value}`);
     return newPath;
   }, []);
+
+  const handleSignOut = useCallback(async () => {
+    await signOut();
+    router.push(`/${store.language.currentLanguage}/login`);
+  }, [router, store.language.currentLanguage]);
 
   const handleLanguageChange = useCallback(
     (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -113,6 +121,18 @@ export const SettingsElement = observer(() => {
             <Option value="light">{t("light", "navbar")}</Option>
           </Select>
         </Row>
+
+        {store.user.currentUserStore ? (
+          <Button
+            theme={store.theme.currentTheme}
+            style={{ width: "100%" }}
+            onClick={handleSignOut}
+          >
+            {t("logOut")}
+          </Button>
+        ) : (
+          <></>
+        )}
       </Settings>
     </>
   );

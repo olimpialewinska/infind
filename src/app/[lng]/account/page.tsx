@@ -1,4 +1,4 @@
-import { Login } from "@/components/pages/Login";
+import { Account } from "@/components/pages/Account";
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/dist/client/components/headers";
 import { redirect } from "next/navigation";
@@ -13,9 +13,9 @@ export default async function Page() {
   const { data } = await supabase.auth.getUser();
   const user = data.user;
 
-  if (user) {
-    redirect(`${getURL("/")}/account`);
+  if (!user) {
+    redirect(`${getURL("/")}/login`);
   }
 
-  return <Login />;
+  return <Account />;
 }

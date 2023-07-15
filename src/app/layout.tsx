@@ -1,8 +1,6 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-
-const inter = Inter({ subsets: ["latin"] });
+import StyledJsxRegistry from "./registry";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,7 +14,10 @@ export default function RootLayout({
 }) {
   return (
     <html>
-      <body>{children}</body>
+      <head></head>
+      <body>
+        <StyledJsxRegistry>{children}</StyledJsxRegistry>
+      </body>
     </html>
   );
 }

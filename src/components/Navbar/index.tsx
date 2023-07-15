@@ -12,10 +12,12 @@ import {
 import { store } from "@/stores";
 import { useTranslation } from "@/app/i18n/client";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { useState } from "react";
-import getURL from "@/app/utils/functions/getURL";
+import { usePathname, useRouter } from "next/navigation";
+import { useCallback, useState } from "react";
+import getURL from "@/utils/functions/getURL";
 import { SettingsElement } from "./Settings";
+import { Button } from "../pages/Login/style";
+import { signOut } from "@/utils/functions/auth/login";
 
 const navigationItems = [
   {
@@ -33,19 +35,19 @@ const navigationItems = [
     color: "#0051c9",
     labelKey: "books",
   },
-  {
-    path: "login",
-    color: "#ad0051",
-    labelKey: "login",
-    hideDivider: true,
-  },
 ];
 
 export const Navbar = observer(() => {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
+  const router = useRouter();
   const language = store.language.currentLanguage;
   const { t } = useTranslation(store.language.currentLanguage, "navbar");
+
+  const handleSignOut = useCallback(async () => {
+    await signOut();
+    router.push(`/${language}/login`);
+  }, [router, language]);
 
   return (
     <Wrapper>
@@ -69,7 +71,6 @@ export const Navbar = observer(() => {
               selected={pathname.split("/")[2] === item.path}
               color={item.color}
               style={{
-                marginRight: item.hideDivider ? 0 : undefined,
                 color:
                   store.theme.currentTheme === "dark"
                     ? "rgba(255,255,255, 0.6)"
@@ -80,6 +81,50 @@ export const Navbar = observer(() => {
             </Item>
           </Link>
         ))}
+
+        {store.user.currentUserStore ? (
+          <Link
+            href={`/${language}/account`}
+            style={{
+              textDecoration: "none",
+            }}
+          >
+            <Item
+              selected={pathname.split("/")[2] === "account"}
+              color={"#ad0051"}
+              style={{
+                marginRight: 0,
+                color:
+                  store.theme.currentTheme === "dark"
+                    ? "rgba(255,255,255, 0.6)"
+                    : "rgba(0,0,0, 0.6)",
+              }}
+            >
+              {store.user.currentUserStore.email.split("@")[0]}
+            </Item>
+          </Link>
+        ) : (
+          <Link
+            href={`/${language}/login`}
+            style={{
+              textDecoration: "none",
+            }}
+          >
+            <Item
+              selected={pathname.split("/")[2] === "login"}
+              color={"#ad0051"}
+              style={{
+                marginRight: 0,
+                color:
+                  store.theme.currentTheme === "dark"
+                    ? "rgba(255,255,255, 0.6)"
+                    : "rgba(0,0,0, 0.6)",
+              }}
+            >
+              {t("login")}
+            </Item>
+          </Link>
+        )}
 
         <SettingsElement />
       </Container>
@@ -107,6 +152,50 @@ export const Navbar = observer(() => {
             <MobileItem>{t(item.labelKey)}</MobileItem>
           </Link>
         ))}
+
+        {store.user.currentUserStore ? (
+          <Link
+            href={`/${language}/account`}
+            onClick={() => setIsOpen(false)}
+            style={{
+              textDecoration: "none",
+              color:
+                store.theme.currentTheme === "dark"
+                  ? "rgba(255,255,255, 0.6)"
+                  : "rgba(0,0,0, 0.6)",
+            }}
+          >
+            <MobileItem>
+              {store.user.currentUserStore?.email.split("@")[0]}
+            </MobileItem>
+          </Link>
+        ) : (
+          <>
+            <Link
+              href={`/${language}/login`}
+              onClick={() => setIsOpen(false)}
+              style={{
+                textDecoration: "none",
+                color:
+                  store.theme.currentTheme === "dark"
+                    ? "rgba(255,255,255, 0.6)"
+                    : "rgba(0,0,0, 0.6)",
+              }}
+            >
+              <MobileItem>{t("login")}</MobileItem>
+            </Link>
+          </>
+        )}
+        <div style={{ flex: 1 }}></div>
+        {store.user.currentUserStore && (
+          <Button
+            onClick={handleSignOut}
+            theme={store.theme.currentTheme}
+            style={{ width: "80%", marginBottom: 20 }}
+          >
+            {t("logOut")}
+          </Button>
+        )}
       </Mobile>
       <Icon
         onClick={() => setIsOpen(!isOpen)}

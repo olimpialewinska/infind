@@ -27,10 +27,8 @@ export default function Layout({
       : "light";
 
     if (cookies["infind-theme"]) {
-      console.log("cookies", cookies["infind-theme"]);
       store.theme.setTheme(cookies["infind-theme"]);
     } else {
-      console.log("preferredTheme", preferredTheme);
       store.theme.setTheme(preferredTheme);
     }
   }, [cookies]);

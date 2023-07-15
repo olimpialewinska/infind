@@ -15,15 +15,27 @@ import { formContext } from "..";
 import { useCallback, useContext, useState } from "react";
 import { useTranslation } from "@/app/i18n/client";
 import { store } from "@/stores";
-import { emailValidation } from "@/app/utils/functions/auth/emailValidation";
 import { Icon } from "@/components/Icon";
+import { handleSignIn } from "@/utils/functions/auth/login";
+import { useRouter } from "next/navigation";
 export const LoginForm = observer(() => {
+  const router = useRouter();
   const { t } = useTranslation(store.language.currentLanguage, "login");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(t("validation-default-message"));
 
   const { changeForm } = useContext(formContext);
+
+  const handleSubmit = useCallback(async () => {
+    const data = await handleSignIn(email, password);
+
+    if (data.error) {
+      return;
+    }
+
+    router.push(`/${store.language.currentLanguage}`);
+  }, [email, password, router]);
 
   return (
     <Wrapper theme={store.theme.currentTheme}>
@@ -44,7 +56,9 @@ export const LoginForm = observer(() => {
         onChange={(e) => setPassword(e.target.value)}
       />
 
-      <Button theme={store.theme.currentTheme}>{t("login-button")}</Button>
+      <Button theme={store.theme.currentTheme} onClick={handleSubmit}>
+        {t("login-button")}
+      </Button>
       <Row style={{ width: "100%", marginTop: 10 }}>
         <Item style={{ marginRight: 2, backgroundColor: "#ff8484" }}>
           <Icon icon="google.png" filter={"none"}></Icon>

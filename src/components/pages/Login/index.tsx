@@ -29,7 +29,6 @@ export const Login = observer(() => {
   return (
     <Bg theme={theme}>
       {" "}
-      <Navbar />
       <div
         style={{
           flex: 1,
@@ -38,6 +37,7 @@ export const Login = observer(() => {
           alignItems: "center",
         }}
       >
+        <Navbar />
         <formContext.Provider value={{ form, changeForm }}>
           {form === "login" ? <LoginForm /> : <RegisterForm />}
         </formContext.Provider>

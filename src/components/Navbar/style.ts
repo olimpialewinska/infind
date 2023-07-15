@@ -89,7 +89,6 @@ export const Mobile = styled.div`
     left: 0;
     width: 100vw;
     height: calc(100vh - 60px);
-    background-color: aliceblue;
     transition: 0.3s all;
   }
 `;
