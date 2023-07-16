@@ -1,3 +1,14 @@
 {
-    "button": "Log in"
+    "login": "Sign in",
+    "register": "Sign up",
+    "password": "password",
+    "login-button": "Sign in",
+    "validation-default-message": "Enter valid login data",
+    "validation-message-register": "Enter valid registation data",
+    "register-button": "Sign up",
+    "footer-text": "Don't have an account?",
+    "footer-link": "Sign up",
+    "footer-text-register": "Already have an account?",
+    "footer-link-register": "Sign in",
+    "confirm-password": "confirm password"
   }

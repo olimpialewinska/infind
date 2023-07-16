@@ -14,7 +14,12 @@ export class Theme {
     });
   }
 
+  public getTheme() {
+    return this.currentTheme;
+  }
+
   public setTheme(theme: "dark" | "light") {
+    console.log("xd");
     this.currentTheme = theme;
   }
 }

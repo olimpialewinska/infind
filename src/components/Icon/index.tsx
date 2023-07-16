@@ -7,6 +7,7 @@ interface IconProps {
   size?: number;
   margin?: string;
   onClick?: () => void;
+  filter?: string;
 }
 
 export const Icon = observer((props: IconProps) => {
@@ -18,7 +19,11 @@ export const Icon = observer((props: IconProps) => {
         height: props.size,
         backgroundImage: `url(/${props.icon})`,
         margin: props.margin,
-        filter: store.theme.currentTheme === "dark" ? "invert(1)" : "none",
+        filter: props.filter
+          ? props.filter
+          : store.theme.currentTheme === "dark"
+          ? "invert(1)"
+          : "none",
       }}
     ></IconBox>
   );

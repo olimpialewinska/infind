@@ -1,3 +1,4 @@
+import { Theme } from "@/stores/theme";
 import styled from "styled-components";
 
 export const SettingsIcon = styled.div`
@@ -50,7 +51,14 @@ export const Settings = styled.div`
   }
 `;
 
-export const Select = styled.select`
+export const Select = styled.select<{ theme: "dark" | "light" }>`
+  border: none;
+  color: ${({ theme }) => (theme === "dark" ? "#fff" : "#000")};
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
   &:focus {
     outline: none;
   }
@@ -71,3 +79,5 @@ export const Label = styled.label`
   font-size: 14px;
   font-weight: 500;
 `;
+
+export const Option = styled.option``;

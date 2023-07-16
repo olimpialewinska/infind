@@ -3,7 +3,6 @@ import { useEffect } from "react";
 import { languages } from "../i18n/settings";
 import { store } from "@/stores";
 import { useCookies } from "react-cookie";
-import { Navbar } from "@/components/Navbar";
 
 export async function generateStaticParams() {
   return languages.map((lng) => ({ lng }));
@@ -28,8 +27,10 @@ export default function Layout({
       : "light";
 
     if (cookies["infind-theme"]) {
+      console.log("cookies", cookies["infind-theme"]);
       store.theme.setTheme(cookies["infind-theme"]);
     } else {
+      console.log("preferredTheme", preferredTheme);
       store.theme.setTheme(preferredTheme);
     }
   }, [cookies]);

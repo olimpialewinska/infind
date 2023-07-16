@@ -1,3 +1,14 @@
 {
-    "button": "Zaloguj sie"
+    "login": "Logowanie",
+    "register": "Rejestracja",
+    "password": "hasło",
+    "login-button": "Zaloguj",
+    "validation-default-message": "Wpisz poprawne dane logowania",
+    "validation-message-register": "Wpisz poprawne dane rejestracji",
+    "register-button": "Zarejestruj",
+    "footer-text": "Nie posiadasz konta?",
+    "footer-link": "Zarejestruj się",
+    "footer-text-register": "Posiadasz już konto?",
+    "footer-link-register": "Zaloguj się",
+    "confirm-password": "potwierdź hasło"
   }

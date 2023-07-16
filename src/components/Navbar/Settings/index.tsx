@@ -1,7 +1,7 @@
 "use client";
 import { store } from "@/stores";
 import { observer } from "mobx-react-lite";
-import { Label, Row, Select, Settings, SettingsIcon } from "./style";
+import { Label, Row, Select, Settings, SettingsIcon, Option } from "./style";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useTranslation } from "@/app/i18n/client";
 import { useCookies } from "react-cookie";
@@ -10,6 +10,7 @@ export const SettingsElement = observer(() => {
   const { t } = useTranslation(store.language.currentLanguage, "navbar");
   const settingsRef = useRef<HTMLDivElement>(null);
   const selectRef = useRef<HTMLSelectElement>(null);
+
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
   const [cookies, setCookie] = useCookies(["infind-theme"]);
 
@@ -28,7 +29,7 @@ export const SettingsElement = observer(() => {
       );
       window.location.replace(newPath);
     },
-    []
+    [createQueryString]
   );
 
   const handleThemeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -90,24 +91,26 @@ export const SettingsElement = observer(() => {
         <Row>
           <Label htmlFor="language">{t("language", "navbar")}</Label>
           <Select
+            theme={store.theme.currentTheme}
             ref={selectRef}
             onChange={handleLanguageChange}
             defaultValue={store.language.currentLanguage}
           >
-            <option value="en">{t("english", "navbar")}</option>
-            <option value="pl">{t("polish", "navbar")}</option>
+            <Option value="en">{t("english", "navbar")}</Option>
+            <Option value="pl">{t("polish", "navbar")}</Option>
           </Select>
         </Row>
 
         <Row>
           <Label htmlFor="dark-mode">{t("color-mode", "navbar")}</Label>
           <Select
+            theme={store.theme.currentTheme}
             ref={selectRef}
             onChange={handleThemeChange}
-            defaultValue={store.theme.currentTheme}
+            value={store.theme.currentTheme}
           >
-            <option value="dark">{t("dark", "navbar")}</option>
-            <option value="light">{t("light", "navbar")}</option>
+            <Option value="dark">{t("dark", "navbar")}</Option>
+            <Option value="light">{t("light", "navbar")}</Option>
           </Select>
         </Row>
       </Settings>
