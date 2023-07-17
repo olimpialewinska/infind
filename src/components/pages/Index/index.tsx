@@ -4,7 +4,6 @@ import { Navbar } from "@/components/Navbar";
 import { Bg } from "@/components/styles";
 import { store } from "@/stores";
 import { observer } from "mobx-react-lite";
-import { useEffect } from "react";
 
 export const Index = observer(() => {
   const { t } = useTranslation(store.language.currentLanguage, "index");

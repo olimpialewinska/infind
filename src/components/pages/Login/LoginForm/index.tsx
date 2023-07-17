@@ -16,7 +16,11 @@ import { useCallback, useContext, useState } from "react";
 import { useTranslation } from "@/app/i18n/client";
 import { store } from "@/stores";
 import { Icon } from "@/components/Icon";
-import { handleSignIn } from "@/utils/functions/auth/login";
+import {
+  facebookSignIn,
+  googleSignIn,
+  handleSignIn,
+} from "@/utils/functions/auth/login";
 import { useRouter } from "next/navigation";
 export const LoginForm = observer(() => {
   const router = useRouter();
@@ -26,6 +30,14 @@ export const LoginForm = observer(() => {
   const [error, setError] = useState(t("validation-default-message"));
 
   const { changeForm } = useContext(formContext);
+
+  const handleGoogleSignIn = useCallback(async () => {
+    googleSignIn();
+  }, []);
+
+  const handleFacebookSignIn = useCallback(async () => {
+    facebookSignIn(store.language.currentLanguage);
+  }, [store.language.currentLanguage]);
 
   const handleSubmit = useCallback(async () => {
     const data = await handleSignIn(email, password);
@@ -60,10 +72,16 @@ export const LoginForm = observer(() => {
         {t("login-button")}
       </Button>
       <Row style={{ width: "100%", marginTop: 10 }}>
-        <Item style={{ marginRight: 2, backgroundColor: "#ff8484" }}>
+        <Item
+          style={{ marginRight: 2, backgroundColor: "#ff8484" }}
+          onClick={handleGoogleSignIn}
+        >
           <Icon icon="google.png" filter={"none"}></Icon>
         </Item>
-        <Item style={{ marginLeft: 2, backgroundColor: "#8cb4fa" }}>
+        <Item
+          style={{ marginLeft: 2, backgroundColor: "#8cb4fa" }}
+          onClick={handleFacebookSignIn}
+        >
           <Icon icon="facebook.png" filter={"none"}></Icon>
         </Item>
       </Row>

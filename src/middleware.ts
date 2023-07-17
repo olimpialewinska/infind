@@ -33,9 +33,9 @@ export async function middleware(req: NextRequest) {
     !req.nextUrl.pathname.startsWith("/_next")
   ) {
     if (!isInternalRequest) {
-      return NextResponse.redirect(
-        new URL(`/${lng}${req.nextUrl.pathname}`, req.url)
-      );
+      const url = req.nextUrl.toString().substring(req.nextUrl.origin.length);
+
+      return NextResponse.redirect(new URL(`/${lng}${url}`, req.url));
     }
   }
 

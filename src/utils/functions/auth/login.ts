@@ -28,6 +28,31 @@ export const handleSignIn = async (email: string, password: string) => {
 };
 
 export const signOut = async () => {
-  await supabase.auth.signOut();
+  const { error } = await supabase.auth.signOut();
   store.user.currentUserStore = undefined;
+};
+
+export const googleSignIn = async () => {
+  const { data, error } = await supabase.auth.signInWithOAuth({
+    provider: "google",
+    options: {
+      queryParams: {
+        access_type: "offline",
+        prompt: "consent",
+      },
+      redirectTo: `${window.location.origin}/`,
+    },
+  });
+};
+
+export const facebookSignIn = async (lng: string) => {
+  const { data, error } = await supabase.auth.signInWithOAuth({
+    provider: "facebook",
+    options: {
+      redirectTo: `${window.location.origin}/en/`,
+      queryParams: {
+        display: "popup",
+      },
+    },
+  });
 };
