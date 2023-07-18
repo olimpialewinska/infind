@@ -49,10 +49,22 @@ export const facebookSignIn = async (lng: string) => {
   const { data, error } = await supabase.auth.signInWithOAuth({
     provider: "facebook",
     options: {
-      redirectTo: `${window.location.origin}/en/`,
+      redirectTo: `${window.location.origin}/${lng}/`,
       queryParams: {
         display: "popup",
       },
     },
+  });
+};
+
+export const passwordReset = async (email: string, lng: string) => {
+  await supabase.auth.resetPasswordForEmail(email, {
+    redirectTo: `${window.location.origin}/${lng}/account/resetPassword`,
+  });
+};
+
+export const passwordRecovery = async (password: string) => {
+  const { error } = await supabase.auth.updateUser({
+    password: password,
   });
 };

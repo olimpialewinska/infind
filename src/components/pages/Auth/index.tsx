@@ -4,7 +4,6 @@ import { Navbar } from "@/components/Navbar";
 import { Bg } from "@/components/styles";
 import { store } from "@/stores";
 import { observer } from "mobx-react-lite";
-import { Wrapper } from "./style";
 import { createContext, useState } from "react";
 import { LoginForm } from "./LoginForm";
 import { RegisterForm } from "./RegisterForm";

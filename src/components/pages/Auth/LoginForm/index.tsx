@@ -90,6 +90,16 @@ export const LoginForm = observer(() => {
         <Paragraph>{t("footer-text")}</Paragraph>
         <Link onClick={changeForm}>{t("footer-link")}</Link>
       </Row>
+      <Row style={{ marginTop: 6 }}>
+        <Paragraph>{t("forgot-password")}</Paragraph>
+        <Link
+          onClick={() =>
+            router.push(`/${store.language.currentLanguage}/forgottenPassword`)
+          }
+        >
+          {t("remind-password")}
+        </Link>
+      </Row>
     </Wrapper>
   );
 });

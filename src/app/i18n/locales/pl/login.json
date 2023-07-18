@@ -10,5 +10,7 @@
     "footer-link": "Zarejestruj się",
     "footer-text-register": "Posiadasz już konto?",
     "footer-link-register": "Zaloguj się",
-    "confirm-password": "potwierdź hasło"
+    "confirm-password": "potwierdź hasło",
+    "forgot-password": "Zapomniałeś hasła?",
+    "remind-password": "Przypomnij hasło"
   }

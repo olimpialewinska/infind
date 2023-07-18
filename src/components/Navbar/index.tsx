@@ -16,7 +16,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { useCallback, useState } from "react";
 import getURL from "@/utils/functions/getURL";
 import { SettingsElement } from "./Settings";
-import { Button } from "../pages/Login/style";
+import { Button } from "../pages/Auth/style";
 import { signOut } from "@/utils/functions/auth/login";
 
 const navigationItems = [

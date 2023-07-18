@@ -5,7 +5,7 @@ import { Label, Row, Select, Settings, SettingsIcon, Option } from "./style";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useTranslation } from "@/app/i18n/client";
 import { useCookies } from "react-cookie";
-import { Button } from "@/components/pages/Login/style";
+import { Button } from "@/components/pages/Auth/style";
 import { signOut } from "@/utils/functions/auth/login";
 import { useRouter } from "next/navigation";
 

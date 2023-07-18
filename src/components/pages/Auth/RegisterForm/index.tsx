@@ -14,7 +14,7 @@ import { useCallback, useContext, useState } from "react";
 import { formContext } from "..";
 import { useTranslation } from "@/app/i18n/client";
 import { store } from "@/stores";
-import { handleSignIn, handleSignUp } from "@/utils/functions/auth/login";
+import { handleSignUp } from "@/utils/functions/auth/login";
 
 export const RegisterForm = observer(() => {
   const { t } = useTranslation(store.language.currentLanguage, "login");
