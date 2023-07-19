@@ -8,7 +8,7 @@ export const handleSignUp = async (email: string, password: string) => {
     email,
     password,
     options: {
-      emailRedirectTo: `${window.location.origin}/`,
+      emailRedirectTo: `${window.location.origin}/${store.language.currentLanguage}/`,
     },
   });
 };
@@ -40,7 +40,7 @@ export const googleSignIn = async () => {
         access_type: "offline",
         prompt: "consent",
       },
-      redirectTo: `${window.location.origin}/`,
+      redirectTo: `${window.location.origin}/${store.language.currentLanguage}`,
     },
   });
 };

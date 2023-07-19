@@ -9,7 +9,6 @@ import {
   Link,
   Paragraph,
   Row,
-  Item,
 } from "../style";
 import { formContext } from "..";
 import { useCallback, useContext, useState } from "react";
@@ -22,6 +21,7 @@ import {
   handleSignIn,
 } from "@/utils/functions/auth/login";
 import { useRouter } from "next/navigation";
+import { Arrow, Item, Text } from "./style";
 export const LoginForm = observer(() => {
   const router = useRouter();
   const { t } = useTranslation(store.language.currentLanguage, "login");
@@ -71,20 +71,27 @@ export const LoginForm = observer(() => {
       <Button theme={store.theme.currentTheme} onClick={handleSubmit}>
         {t("login-button")}
       </Button>
-      <Row style={{ width: "100%", marginTop: 10 }}>
-        <Item
-          style={{ marginRight: 2, backgroundColor: "#ff8484" }}
-          onClick={handleGoogleSignIn}
-        >
-          <Icon icon="google.png" filter={"none"}></Icon>
-        </Item>
-        <Item
-          style={{ marginLeft: 2, backgroundColor: "#8cb4fa" }}
-          onClick={handleFacebookSignIn}
-        >
-          <Icon icon="facebook.png" filter={"none"}></Icon>
-        </Item>
-      </Row>
+
+      <Item
+        onClick={handleGoogleSignIn}
+        style={{ marginTop: 30 }}
+        theme={store.theme.currentTheme}
+      >
+        <Icon
+          icon="google.png"
+          filter={store.theme.currentTheme === "dark" ? "invert(1)" : "none"}
+        ></Icon>
+        <Text>Log in with Google</Text>
+        <Arrow theme={store.theme.currentTheme} />
+      </Item>
+      <Item onClick={handleFacebookSignIn} theme={store.theme.currentTheme}>
+        <Icon
+          icon="facebook.png"
+          filter={store.theme.currentTheme === "dark" ? "invert(1)" : "none"}
+        ></Icon>
+        <Text>Log in with Facebook</Text>
+        <Arrow theme={store.theme.currentTheme} />
+      </Item>
 
       <Row style={{ marginTop: 10 }}>
         <Paragraph>{t("footer-text")}</Paragraph>
