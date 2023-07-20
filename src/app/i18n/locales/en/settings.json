@@ -1,0 +1,8 @@
+{
+  "settings": "Settings",
+  "title": "Reset Password",
+  "info": "Enter new password",
+  "button": "Reset Password",
+  "password": "Password",
+  "confirm_password": "Confirm Password"
+}

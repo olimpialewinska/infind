@@ -12,13 +12,16 @@ export const Wrapper = styled.div<{ theme: "dark" | "light" }>`
   color: ${({ theme }) =>
     theme === "dark" ? "rgba(255,255,255, 0.7)" : "rgba(0, 0, 0, 0.7)"};
   transition: 0.3s all;
+  margin-top: 60px;
 
   @media (max-width: 768px) and (min-width: 500px) {
     width: 70vw;
+    margin-top: 0;
   }
 
   @media (max-width: 500px) {
     width: 90vw;
+    margin-top: 0;
   }
 `;
 

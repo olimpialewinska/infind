@@ -10,5 +10,4 @@ export const Bg = styled.div<{ theme: "dark" | "light" }>`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
 `;

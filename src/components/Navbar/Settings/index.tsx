@@ -23,6 +23,10 @@ export const SettingsElement = observer(() => {
     return newPath;
   }, []);
 
+  const openSettings = useCallback(() => {
+    router.push(`/${store.language.currentLanguage}/account/settings`);
+  }, [router, store.language.currentLanguage]);
+
   const handleSignOut = useCallback(async () => {
     await signOut();
     router.push(`/${store.language.currentLanguage}/login`);
@@ -122,7 +126,17 @@ export const SettingsElement = observer(() => {
           </Select>
         </Row>
 
-        {store.user.currentUserStore ? (
+        {store.user.currentUserStore && (
+          <Button
+            theme={store.theme.currentTheme}
+            style={{ width: "100%", marginBottom: 10 }}
+            onClick={openSettings}
+          >
+            {t("settings")}
+          </Button>
+        )}
+
+        {store.user.currentUserStore && (
           <Button
             theme={store.theme.currentTheme}
             style={{ width: "100%" }}
@@ -130,8 +144,6 @@ export const SettingsElement = observer(() => {
           >
             {t("logOut")}
           </Button>
-        ) : (
-          <></>
         )}
       </Settings>
     </>
