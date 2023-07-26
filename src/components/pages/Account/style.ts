@@ -8,9 +8,12 @@ export const Buttons = styled.div`
   margin-bottom: 16px;
 `;
 
-export const Button = styled.div<{ theme: "dark" | "light"; active: boolean }>`
-  background-color: ${({ theme, active }) =>
-    active
+export const Button = styled.div<{
+  theme: "dark" | "light";
+  selected: boolean;
+}>`
+  background-color: ${({ theme, selected }) =>
+    selected
       ? theme === "dark"
         ? "rgba(255,255,255, 0.1)"
         : "rgba(0, 0, 0, 0.1)"

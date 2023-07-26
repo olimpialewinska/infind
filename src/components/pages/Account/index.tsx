@@ -29,7 +29,7 @@ export const Account = observer(() => {
           <Button
             key={id}
             theme={store.theme.currentTheme}
-            active={form === id}
+            selected={form === id}
             onClick={() => setForm(id)}
           >
             {label}
