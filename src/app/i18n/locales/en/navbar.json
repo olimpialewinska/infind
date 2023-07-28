@@ -1,14 +1,14 @@
 {
-    "login": "Login",
-    "books": "Books",
-    "movies": "Movies",
-    "music": "Music",
-    "language": "Language",
-    "color-mode": "Color mode",
-    "polish": "Polski",
-    "english": "English",
-    "light": "Light",
-    "dark": "Dark",
-    "logOut": "Sign out",
-    "settings": "Settings"
+  "login": "Login",
+  "games": "Games",
+  "movies": "Movies",
+  "series": "Series",
+  "language": "Language",
+  "color-mode": "Color mode",
+  "polish": "Polski",
+  "english": "English",
+  "light": "Light",
+  "dark": "Dark",
+  "logOut": "Sign out",
+  "settings": "Settings"
 }

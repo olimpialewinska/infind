@@ -26,14 +26,14 @@ const navigationItems = [
     labelKey: "movies",
   },
   {
-    path: "music",
+    path: "series",
     color: "#7500c9",
-    labelKey: "music",
+    labelKey: "series",
   },
   {
-    path: "books",
+    path: "games",
     color: "#0051c9",
-    labelKey: "books",
+    labelKey: "games",
   },
 ];
 

@@ -28,7 +28,7 @@ export const SettingsIcon = styled.div`
     width: 100%;
     height: 100%;
     filter: none;
-    z-index: -1;
+    z-index: 1;
   }
 `;
 
@@ -45,6 +45,7 @@ export const Settings = styled.div`
   align-items: center;
   z-index: 10;
   transition: 0.2s all;
+  z-index: 99999;
 
   &:focus {
     outline: none;

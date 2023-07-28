@@ -4,7 +4,7 @@ import StyledJsxRegistry from "./registry";
 
 export const metadata: Metadata = {
   title: "Infind",
-  description: "Find your favorite films and books",
+  description: "Find your favorite films and series",
 };
 
 export default function RootLayout({

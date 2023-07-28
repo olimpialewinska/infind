@@ -6,7 +6,7 @@ export const Container = styled.div`
   width: 100%;
   max-width: 100%;
   min-height: 340px;
-  margin-bottom: 20px;
+  overflow: auto;
 `;
 
 export const Wrapper = styled.div`
@@ -38,10 +38,10 @@ export const Content = styled.div`
   width: 100%;
   height: 100%;
   overflow: auto;
+  padding-bottom: 20px;
   align-items: flex-start;
   justify-content: flex-start;
-  overflow-x: auto;
-  overflow-y: hidden;
+  overflow: auto;
   -webkit-overflow-scrolling: touch;
   &::-webkit-scrollbar {
     display: none;

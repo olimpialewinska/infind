@@ -5,7 +5,7 @@ import { Bg } from "@/components/styles";
 import { store } from "@/stores";
 import { observer } from "mobx-react-lite";
 
-export const Books = observer(() => {
+export const Games = observer(() => {
   const { t } = useTranslation(store.language.currentLanguage, "index");
   const theme: "dark" | "light" = store.theme.currentTheme;
   return (

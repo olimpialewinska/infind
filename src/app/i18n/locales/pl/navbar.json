@@ -1,14 +1,14 @@
 {
-    "login": "Logowanie",
-    "books": "Książki",
-    "movies": "Filmy",
-    "music": "Muzyka",
-    "language": "Język",
-    "color-mode": "Tryb kolorów",
-    "polish": "Polski",
-    "english": "English",
-    "dark": "Ciemny",
-    "light": "Jasny",
-    "logOut": "Wyloguj",
-    "settings": "Ustawienia"
+  "login": "Logowanie",
+  "games": "Gry",
+  "movies": "Filmy",
+  "series": "Seriale",
+  "language": "Język",
+  "color-mode": "Tryb kolorów",
+  "polish": "Polski",
+  "english": "English",
+  "dark": "Ciemny",
+  "light": "Jasny",
+  "logOut": "Wyloguj",
+  "settings": "Ustawienia"
 }

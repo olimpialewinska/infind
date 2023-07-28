@@ -10,6 +10,7 @@ export const Wrapper = styled.div`
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   margin-right: 10px;
   position: relative;
+  z-index: 10;
 `;
 
 export const Img = styled.div`
