@@ -14,7 +14,13 @@ export default function RootLayout({
 }) {
   return (
     <html>
-      <head></head>
+      <head>
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2379039200983651"
+          crossOrigin="anonymous"
+        ></script>
+      </head>
       <body>
         <StyledJsxRegistry>{children}</StyledJsxRegistry>
       </body>
