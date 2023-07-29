@@ -1,7 +1,7 @@
 import { observer } from "mobx-react-lite";
 import { Content, Date, Description, Image, Title, Wrapper } from "./style";
 import { store } from "@/stores";
-import { IElement } from "../../FindSimilar";
+import { IElement } from "@/utils/interfaces/IElement";
 
 interface IProps {
   element: IElement;

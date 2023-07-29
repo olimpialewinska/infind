@@ -1,4 +1,4 @@
-import { IElement } from "@/components/pages/Account/FindSimilar";
+import { IElement } from "@/utils/interfaces/IElement";
 import {
   Wrapper,
   Img,

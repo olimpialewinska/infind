@@ -5,14 +5,7 @@ import { observer } from "mobx-react-lite";
 import { Container, Content, Input, ItemBox, TextQuery, Title } from "./style";
 import { KeyboardEvent, useState } from "react";
 import { Element } from "./Element";
-
-export interface IElement {
-  id: string;
-  title: string;
-  description: string;
-  img: string;
-  date: string;
-}
+import { IElement } from "@/utils/interfaces/IElement";
 
 export const FindSimilar = observer(() => {
   const [queries, setQueries] = useState<(string | IElement)[]>([

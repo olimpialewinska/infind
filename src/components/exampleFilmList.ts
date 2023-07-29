@@ -1,4 +1,4 @@
-import { IElement } from "./pages/Account/FindSimilar";
+import { IElement } from "@/utils/interfaces/IElement";
 
 export const items: IElement[] = [
   {

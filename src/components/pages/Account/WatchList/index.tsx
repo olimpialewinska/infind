@@ -4,8 +4,9 @@ import { store } from "@/stores";
 import { observer } from "mobx-react-lite";
 import { Container } from "./style";
 import { Title } from "../../Auth/style";
-import { IElement } from "../FindSimilar";
+
 import { Element } from "./Element";
+import { IElement } from "@/utils/interfaces/IElement";
 
 export const WatchList = observer(() => {
   const { t } = useTranslation(store.language.currentLanguage, "watchList");
