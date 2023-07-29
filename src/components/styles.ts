@@ -1,3 +1,4 @@
+"use client";
 import { styled } from "styled-components";
 
 export const Bg = styled.div<{ theme: "dark" | "light" }>`
@@ -82,7 +83,7 @@ export const Row = styled.div`
   }
 `;
 
-export const FilterContainer = styled.div`
+export const FilterContainer = styled.div<{ theme: "dark" | "light" }>`
   display: flex;
   flex-direction: row;
   gap: 8px;
@@ -90,7 +91,9 @@ export const FilterContainer = styled.div`
   justify-content: space-between;
   padding: 4px 12px;
   border-radius: 24px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid
+    ${({ theme }) =>
+      theme === "dark" ? "rgba(255,255,255,0.1)" : "rgba(0,0,0,0.1)"};
   opacity: 0.8;
   cursor: pointer;
   transition: 0.15s all;

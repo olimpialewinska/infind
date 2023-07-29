@@ -45,14 +45,17 @@ export const Movies = observer(() => {
         </ChatSearchContainer>
 
         <Row>
-          <FilterContainer onClick={handleShow}>
+          <FilterContainer
+            onClick={handleShow}
+            theme={store.theme.currentTheme}
+          >
             <FilterTitle>Filtr</FilterTitle>
             <FilterIcon
               theme={store.theme.currentTheme}
               style={{ backgroundImage: `url(/filtr.png)` }}
             />
           </FilterContainer>
-          <FilterContainer>
+          <FilterContainer theme={store.theme.currentTheme}>
             <FilterTitle>Sort</FilterTitle>
             <FilterIcon
               theme={store.theme.currentTheme}

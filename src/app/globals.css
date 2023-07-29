@@ -22,3 +22,25 @@ body {
     color-scheme: dark;
   }
 }
+
+.bg {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #242526;
+}
+
+.bg h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.bg p {
+  font-size: 1rem;
+  font-weight: 400;
+  margin-bottom: 1rem;
+}

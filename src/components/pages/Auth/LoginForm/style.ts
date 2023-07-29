@@ -1,3 +1,4 @@
+"use client";
 import styled from "styled-components";
 
 export const Item = styled.div<{ theme: "dark" | "light" }>`
