@@ -29,6 +29,12 @@ export const Title = styled.div`
 export const SeeMoreBtn = styled.div`
   font-size: 12px;
   opacity: 0.6;
+  cursor: pointer;
+  transition: 0.1s all;
+
+  &:hover {
+    opacity: 1;
+  }
 `;
 
 export const Content = styled.div`

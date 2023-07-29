@@ -72,7 +72,7 @@ export const Row = observer((props: IProps) => {
     <Container>
       <Wrapper>
         <Title>{props.title}</Title>
-        <SeeMoreBtn>See more</SeeMoreBtn>
+        <SeeMoreBtn>See more ➔</SeeMoreBtn>
       </Wrapper>
       <Content>
         {items.map((item) => {
